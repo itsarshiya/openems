@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/chargingstation/v2g/Config.java=UTF-8
+encoding//src/chargingstation/v2g/MyModbusDevice.java=UTF-8
+encoding//src/chargingstation/v2g/MyModbusDeviceImpl.java=UTF-8
+encoding//test/chargingstation/v2g/MyConfig.java=UTF-8
+encoding//test/chargingstation/v2g/MyModbusDeviceTest.java=UTF-8
+encoding/bnd.bnd=UTF-8
+encoding/readme.adoc=UTF-8

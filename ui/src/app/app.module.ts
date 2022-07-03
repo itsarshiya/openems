@@ -1,6 +1,6 @@
 import { registerLocaleData } from '@angular/common';
 import localDE from '@angular/common/locales/de';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
@@ -21,6 +21,9 @@ import { SharedModule } from './shared/shared.module';
 import { StatusSingleComponent } from './shared/status/single/status.component';
 import { Language } from './shared/translate/language';
 import { UserModule } from './user/user.module';
+import { HttpClientModule } from '@angular/common/http';
+
+export let ChargingStationInjector: Injector;
 
 @NgModule({
   declarations: [
@@ -30,11 +33,9 @@ import { UserModule } from './user/user.module';
     StatusSingleComponent,
     SystemLogComponent,
   ],
-  entryComponents: [
-    ChartOptionsPopoverComponent,
-    PickDatePopoverComponent,
-  ],
+  entryComponents: [ChartOptionsPopoverComponent, PickDatePopoverComponent],
   imports: [
+    HttpClientModule,
     AngularMyDatePickerModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -45,21 +46,22 @@ import { UserModule } from './user/user.module';
     IonicModule.forRoot(),
     SharedModule,
     TranslateModule.forRoot({
-      loader: { provide: TranslateLoader, useClass: Language }
+      loader: { provide: TranslateLoader, useClass: Language },
     }),
     UserModule,
-    RegistrationModule
+    RegistrationModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     CookieService,
     // { provide: ErrorHandler, useExisting: Service },
-    { provide: LOCALE_ID, useValue: 'de' }
+    { provide: LOCALE_ID, useValue: 'de' },
   ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor() {
+  constructor(private injector: Injector) {
+    ChargingStationInjector = this.injector;
     registerLocaleData(localDE);
   }
 }

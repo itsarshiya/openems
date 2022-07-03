@@ -6,8 +6,7 @@ import { DefaultTypes } from 'src/app/shared/service/defaulttypes';
 import { Base64PayloadResponse } from '../jsonrpc/response/base64PayloadResponse';
 
 export class Utils {
-
-  constructor() { }
+  constructor() {}
 
   /**
    * Returns true for last element of array
@@ -25,7 +24,7 @@ export class Utils {
     let copy: any;
 
     // Handle the 3 simple types, and null or undefined
-    if (null == obj || "object" != typeof obj) return obj;
+    if (null == obj || 'object' != typeof obj) return obj;
 
     // Handle Date
     if (obj instanceof Date) {
@@ -71,9 +70,9 @@ export class Utils {
 
   /**
    * Safely adds two - possibly 'null' - values: v1 + v2
-   * 
-   * @param v1 
-   * @param v2 
+   *
+   * @param v1
+   * @param v2
    */
   public static addSafely(v1: number, v2: number): number {
     if (v1 == null) {
@@ -87,9 +86,9 @@ export class Utils {
 
   /**
    * Safely subtracts two - possibly 'null' - values: v1 - v2
-   * 
-   * @param v1 
-   * @param v2 
+   *
+   * @param v1
+   * @param v2
    */
   public static subtractSafely(v1: number, v2: number): number {
     if (v1 == null) {
@@ -102,9 +101,9 @@ export class Utils {
   }
   /**
    * Safely divides two - possibly 'null' - values: v1 / v2
-   * 
-   * @param v1 
-   * @param v2 
+   *
+   * @param v1
+   * @param v2
    */
   public static divideSafely(v1: number, v2: number): number | null {
     if (v1 == null || v2 == null) {
@@ -118,9 +117,9 @@ export class Utils {
 
   /**
    * Safely multiplies two - possibly 'null' - values: v1 * v2
-   * 
-   * @param v1 
-   * @param v2 
+   *
+   * @param v1
+   * @param v2
    */
   public static multiplySafely(v1: number, v2: number): number {
     if (v1 == null || v2 == null) {
@@ -138,8 +137,8 @@ export class Utils {
 
   /**
    * Safely rounds a - possibly 'null' - value: Math.round(v)
-   * 
-   * @param v 
+   *
+   * @param v
    */
   public static roundSafely(v: number): number {
     if (v == null) {
@@ -151,7 +150,7 @@ export class Utils {
 
   /**
    * Gets the value; or if it is null, gets the 'orElse' value
-   * 
+   *
    * @param v      the value or null
    * @param orElse the default value
    * @returns      the value or the default value
@@ -166,7 +165,7 @@ export class Utils {
 
   /**
    * Matches all filter-strings with all base-strings.
-   * 
+   *
    * @param filters array of filter-strings
    * @param bases   array of base-strings
    * @returns       true if all filter strings exist in any base-strings
@@ -187,11 +186,11 @@ export class Utils {
   }
 
   /**
-  * Converts a value in Watt [W] to KiloWatt [kW].
-  * 
-  * @param value the value from passed value in html
-  * @returns converted value
-  */
+   * Converts a value in Watt [W] to KiloWatt [kW].
+   *
+   * @param value the value from passed value in html
+   * @returns converted value
+   */
   public static CONVERT_TO_WATT = (value: any): string => {
     if (value == null) {
       return '-';
@@ -200,11 +199,11 @@ export class Utils {
     } else {
       return '0 W';
     }
-  }
+  };
 
   /**
    * Converts a value in Watt [W] to KiloWatt [kW].
-   * 
+   *
    * @param value the value from passed value in html
    * @returns converted value
    */
@@ -212,52 +211,60 @@ export class Utils {
     if (value == null) {
       return '-';
     }
-    let thisValue: number = (value / 1000);
+    let thisValue: number = value / 1000;
 
     if (thisValue >= 0) {
       return formatNumber(thisValue, 'de', '1.0-1') + ' kW';
     } else {
       return '0 kW';
     }
-  }
+  };
 
   /**
    * Converts a value in Seconds [s] to Dateformat [kk:mm:ss].
-   * 
+   *
    * @param value the value from passed value in html
    * @returns converted value
    */
   public static CONVERT_SECONDS_TO_DATE_FORMAT = (value: any): string => {
-    return new Date(value * 1000).toLocaleTimeString()
-  }
+    return new Date(value * 1000).toLocaleTimeString();
+  };
 
   public static CONVERT_TO_PERCENT = (value: any): string => {
-    return value + ' %'
-  }
+    return value + ' %';
+  };
+
+  public static CONVERT_TO_CELCIUS = (value: any): string => {
+    return value + ' °C';
+  };
+
+  public static CONVERT_TO_VOLT = (value: any): string => {
+    return value + ' V';
+  };
 
   /**
-  * Converts a value to WattHours [Wh]
-  * 
-  * @param value the value from passed value in html
-  * @returns converted value
-  */
+   * Converts a value to WattHours [Wh]
+   *
+   * @param value the value from passed value in html
+   * @returns converted value
+   */
   public static CONVERT_TO_WATTHOURS = (value: any): string => {
-    return formatNumber(value, 'de', '1.0-1') + ' Wh'
-  }
+    return formatNumber(value, 'de', '1.0-1') + ' Wh';
+  };
 
   /**
-  * Converts a value in WattHours [Wh] to KiloWattHours [kWh]
-  * 
-  * @param value the value from passed value in html
-  * @returns converted value
-  */
+   * Converts a value in WattHours [Wh] to KiloWattHours [kWh]
+   *
+   * @param value the value from passed value in html
+   * @returns converted value
+   */
   public static CONVERT_TO_KILO_WATTHOURS = (value: any): string => {
-    return formatNumber(value / 1000, 'de', '1.0-1') + ' kWh'
-  }
+    return formatNumber(value / 1000, 'de', '1.0-1') + ' kWh';
+  };
 
   /**
    * Converts states 'MANUAL_ON' and 'MANUAL_OFF' to translated strings.
-   * 
+   *
    * @param value the value from passed value in html
    * @returns converted value
    */
@@ -270,27 +277,36 @@ export class Utils {
       } else {
         return '-';
       }
-    }
-  }
+    };
+  };
 
   /**
    * Takes a power value and extracts the information if it represents Charge or Discharge.
-   * 
+   *
    * @param translate the translate service
    * @param power the power
    * @returns an object with charge/discharge information and power value
    */
-  public static convertChargeDischargePower(translate: TranslateService, power: number): { name: string, value: number } {
+  public static convertChargeDischargePower(
+    translate: TranslateService,
+    power: number
+  ): { name: string; value: number } {
     if (power >= 0) {
-      return { name: translate.instant('General.dischargePower'), value: power };
+      return {
+        name: translate.instant('General.dischargePower'),
+        value: power,
+      };
     } else {
-      return { name: translate.instant('General.chargePower'), value: power * -1 };
+      return {
+        name: translate.instant('General.chargePower'),
+        value: power * -1,
+      };
     }
   }
 
   /**
    * Gets the image path for storage depending on State-of-Charge.
-   * 
+   *
    * @param soc the state-of-charge
    * @returns the image path
    */
@@ -312,11 +328,14 @@ export class Utils {
 
   /**
    * Download a JSONRPC Base64PayloadResponse in Excel (XLSX) file format.
-   *  
+   *
    * @param response the Base64PayloadResponse
    * @param filename the filename without .xlsx suffix
    */
-  public static downloadXlsx(response: Base64PayloadResponse, filename: string) {
+  public static downloadXlsx(
+    response: Base64PayloadResponse,
+    filename: string
+  ) {
     // decode base64 string, remove space for IE compatibility
     // source: https://stackoverflow.com/questions/36036280/base64-representing-pdf-to-blob-javascript/45872086
     var binary = atob(response.result.payload.replace(/\s/g, ''));
@@ -327,20 +346,23 @@ export class Utils {
       view[i] = binary.charCodeAt(i);
     }
     const data: Blob = new Blob([view], {
-      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8',
     });
 
     saveAs(data, filename + '.xlsx');
   }
 
   /*
-  * Calculate the Self-Consumption rate.
-  * 
-  * @param sellToGrid the Sell-To-Grid power (i.e. the inverted GridActivePower)
-  * @param productionActivePower  the Production Power
-  * @returns  the Self-Consumption rate
-  */
-  public static calculateSelfConsumption(sellToGrid: number, productionActivePower: number): number | null {
+   * Calculate the Self-Consumption rate.
+   *
+   * @param sellToGrid the Sell-To-Grid power (i.e. the inverted GridActivePower)
+   * @param productionActivePower  the Production Power
+   * @returns  the Self-Consumption rate
+   */
+  public static calculateSelfConsumption(
+    sellToGrid: number,
+    productionActivePower: number
+  ): number | null {
     if (sellToGrid == null || productionActivePower == null) {
       return null;
     }
@@ -351,7 +373,7 @@ export class Utils {
     }
 
     // Self-Consumption rate
-    let result = (1 - (sellToGrid / productionActivePower)) * 100;
+    let result = (1 - sellToGrid / productionActivePower) * 100;
 
     // At least 0 %
     result = Math.max(result, 0);

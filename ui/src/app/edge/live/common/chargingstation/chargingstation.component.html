@@ -1,0 +1,10 @@
+<oe-flat-widget img="assets/img/ev.png" title="Charging Station - V2G">
+    <oe-flat-widget-line [name]="statusText">
+    </oe-flat-widget-line>
+    <!-- <oe-flat-widget-line name="Voltage Power unit" [value]="100" [converter]="CONVERT_TO_WATTHOURS">
+    </oe-flat-widget-line> -->
+    <oe-flat-widget-line name="Temperature Power Unit" [value]="temperature" [converter]="CONVERT_TO_CELCIUS">
+    </oe-flat-widget-line>
+    <oe-flat-widget-line name="Grid L1 Voltage" [value]="gridvoltage" [converter]="CONVERT_TO_VOLT">
+    </oe-flat-widget-line>
+</oe-flat-widget>
